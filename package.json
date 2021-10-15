@@ -1,0 +1,26 @@
+{
+  "name": "audio_fuse",
+  "version": "1.0.0",
+  "description": "A full stack web app to visualize personalized Spotify music",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neyzar1111/audio_fuse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neyzar1111/audio_fuse/issues"
+  },
+  "homepage": "https://github.com/neyzar1111/audio_fuse#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
