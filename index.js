@@ -2,6 +2,13 @@ const express = require('express');
 
 const app = express();
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+
+// test on terminal
+console.log(process.env.CLIENT_ID);
+
 app.get('/', (req, res)=> {
   // res.send('hello World!');
   const data = {
