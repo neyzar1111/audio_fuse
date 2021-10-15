@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
@@ -18,13 +19,11 @@ app.get('/', (req, res)=> {
   res.json(data);
 });
 
-app.get('/awesome-generator', (req, res)=> {
-  // res.send('hello World!');
-
-  // http://localhost:8888/awesome-generator/?name=anna&isAwesome=true
-  const {name, isAwesome} = req.query;
-  res.send(`${name} is ${JSON.parse(isAwesome) ? 'really' : 'not'} awesome`);
+app.get('/login', (req, res)=> {
+// redirect to the spotify account service url login page from http://localhost:8888/login
+res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`);
 });
+
 
 const port = 8888;
 
