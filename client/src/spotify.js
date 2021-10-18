@@ -15,7 +15,17 @@ const LOCALSTORAGE_VALUES = {
     timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 }
 
-
+/**
+ * Clear out all localStorage items we've set and reload the page
+ */
+export const logout = () => {
+    // Clear all localStorage items
+    for (const property in LOCALSTORAGE_KEYS) {
+        window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
+    }
+    // Navigate to homepage
+    window.location = window.location.origin;
+};
 
 
 const hasTokenExpired = () => {
