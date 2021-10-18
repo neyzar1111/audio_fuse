@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/neyzar1111/audio_fuse#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "querystring-browser": "^1.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
