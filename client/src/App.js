@@ -1,25 +1,28 @@
 import {useState,useEffect} from "react";
-import './App.css';
+import {accessToken} from "../spotify";
 
 function App() {
+  const [token , setToken] = useState(null)
   useEffect(()=>{
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const accessToken = urlParams.get('access_token');
-    const refreshToken = urlParams.get('refresh_token');
-
+    setToken(accessToken);
 
   }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
 
-        <a
-          className="App-link"
-          href="http://localhost:8888/login"
-        >
-          Login with Spotify
-        </a>
+        {!token ? (
+            <a
+                className="App-link"
+                href="http://localhost:8888/login"
+            >
+              Login with Spotify
+            </a>
+        ): <h1> Logged in</h1>}
+
+
       </header>
     </div>
   );
