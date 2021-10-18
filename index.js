@@ -34,12 +34,21 @@ const generateRandomString = length => {
   return text;
 };
 
-// obeserve terminal
+// observe terminal
 console.log(generateRandomString(16));
+
+const stateKey = 'spotify_auth_state';
 
 app.get('/login', (req, res)=> {
 
-// redirect to the spotify account service url login page from http://localhost:8888/login
+  // set cookie - name to value
+  // https://stackoverflow.com/questions/49733714/spotifywebapi-trouble-with-authentication-authorization-code-in-nodejs
+const state = generateRandomString(16);
+res.cookie(stateKey, state);
+
+const scope = 'user-read-private user-read-email';
+
+// redirect to the spotify account service authorize url login page from http://localhost:8888/login
 res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`);
 });
 // https://accounts.spotify.com/en/authorize?client_id=d88b20c9c8f04ffc9482309a3210bbcc&response_type=code&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback
