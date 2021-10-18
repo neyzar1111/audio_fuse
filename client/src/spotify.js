@@ -18,7 +18,14 @@ const LOCALSTORAGE_VALUES = {
 
 
 
-
+const hasTokenExpired = () => {
+    const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
+    if (!accessToken || !timestamp) {
+        return false;
+    }
+    const millisecondsElapsed = Date.now() - Number(timestamp);
+    return (millisecondsElapsed / 1000) > Number(expireTime);
+};
 /**
  * Use the refresh token in localStorage to hit the /refresh_token endpoint
  * in our Node app, then update values in localStorage with data from
