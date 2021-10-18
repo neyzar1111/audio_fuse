@@ -1,5 +1,6 @@
 import {useState,useEffect} from "react";
 import {accessToken,logout, getCurrentUserProfile} from "./spotify";
+import {catErrors} from "./utils";
 
 function App() {
   const [token , setToken] = useState(null);
@@ -8,15 +9,13 @@ function App() {
   useEffect(()=>{
     setToken(accessToken);
     const fetchData = async()=> {
-        try {
-            const {data} = await getCurrentUserProfile();
-            setProfile(data);
-            console.log(data);
-        } catch (e){
-            console.error(e)
-        }
+        const {data} = await getCurrentUserProfile();
+        setProfile(data);
+        console.log(data)
     }
-    fetchData()
+
+   catErrors( fetchData());
+
 
   }, [])
 
@@ -36,7 +35,21 @@ function App() {
         <>
             <h1> Logged in</h1>
             <button onClick={logout}>Log Out</button>
-
+            {profile &&
+                (
+                    <>
+                      <div>
+                          <h1>{profile.display_name}</h1>
+                          <p>{profile.followers.total} Followers</p>
+                          {profile.images.length && profile.images[0].url &&
+                              (
+                                  <>
+                                    <img src={profile.images[0].url} alt="Avatar image"/>
+                                  </>
+                              )}
+                      </div>
+                    </>
+                )}
         </>
         }
 
