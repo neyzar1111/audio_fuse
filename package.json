@@ -4,7 +4,10 @@
   "description": "A full stack web app to visualize personalized Spotify music",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "nodemon index.js",
+    "client": "cd client && npm start",
+    "postinstall": "cd client && npm install"
   },
   "repository": {
     "type": "git",
@@ -21,8 +24,11 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "querystring-browser": "^1.0.4"
+    "axios": "^0.23.0",
+    "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
+    "concurrently": "^6.3.0",
     "nodemon": "^2.0.13"
   }
 }
