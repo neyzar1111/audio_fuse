@@ -29,7 +29,7 @@ const variables = css`
     --spacing-xxl: 64px;
 
     --border-radius-subtle: 4px;
-    --border-radius-pill: 30px;
+    --border-radius-pill: 5px;
 
     --site-max-width: 1300px;
   }
