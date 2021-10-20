@@ -66,33 +66,19 @@ function App() {
                     <ScrollToTop />
                     <Switch>
                         <Route path="/top-artists">
-                            <h1>Top Artists</h1>
+                            <h1>Top-Artists</h1>
                         </Route>
                         <Route path="/top-tracks">
                             <h1>Top Tracks</h1>
                         </Route>
                         <Route path="/playlists/:id">
-                            <h1>Playlists</h1>
+                            <h1>Playlist</h1>
                         </Route>
                         <Route path="/playlists">
                             <h1>Playlists</h1>
                         </Route>
                         <Route path="/">
-                            <>
-                                {profile &&
-                                    (
-                                        <div>
-                                            <h1>{profile.display_name}</h1>
-                                            <p>{profile.followers.total}Followers</p>
-                                            {profile.images.length && profile.images[0].url &&
-                                                (
-                                                     <img src={profile.images[0].url} alt="Avatar image"/>
-                                                 )
-                                            }
-                                        </div>
-                                    )
-                                }
-                            </>
+                            <Profile />
                         </Route>
                     </Switch>
                 </Router>
