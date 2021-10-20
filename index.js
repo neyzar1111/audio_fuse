@@ -70,17 +70,11 @@ axios({
     code: code, //param from res.query needs to strigify
     redirect_uri: REDIRECT_URI 
   },
-  // headers: {
-  //     'content-type': 'application/x-www-form-urlencoded',
-  //     Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-  // },
-// })
-// .then( response => {
-//   // console.log(response.data);
-//   // console.log(response.status);
-//   // console.log(response.headers);
-  // console.log('hello');
-});
+  headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+  },
+})
 
 });
 
