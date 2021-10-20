@@ -11,17 +11,13 @@ import {
 } from "react-router-dom";
 import styled, { createGlobalStyle }from 'styled-components/macro';
 import {GlobalStyle} from "./styles";
+import {Login} from "./pages";
+
+
+
 //==============Component==================
 
 
-
-const StyledLoginButton = styled.a`
-    background-color: var(--pink);
-    color: var(--black);
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: inline-block;
-`
 
 function App() {
   const [token , setToken] = useState(null);
@@ -46,12 +42,7 @@ function App() {
         <GlobalStyle />
       <header className="App-header">
         {!token ? (
-            <StyledLoginButton
-                className="App-link"
-                href="http://localhost:8888/login"
-            >
-              Login with Spotify
-            </StyledLoginButton>
+          <Login/>
         ):(
             <Router>
                 <ScrollToTop />
@@ -91,7 +82,6 @@ function App() {
         )
 
         }
-
 
       </header>
     </div>
