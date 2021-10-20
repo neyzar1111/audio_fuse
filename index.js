@@ -56,8 +56,10 @@ res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&resp
 // https://accounts.spotify.com/en/authorize?client_id=d88b20c9c8f04ffc9482309a3210bbcc&response_type=code&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback
 
 app.get('/callback', (req, res) => {
-  // res.send('callback');
-  const code = req.query.code || null;
+  res.send('callback');
+  const code = JSON.stringify(req.query.code || null);
+  // console.log(code);
+  REDIRECT_URI = JSON.stringify(REDIRECT_URI);
 
 // Send a POST request
 axios({
@@ -65,14 +67,20 @@ axios({
   url: 'https://accounts.spotify.com/api/token',
   data: {
     grant_type: 'authorization_code',
-    code: code, //param from res.query
+    code: code, //param from res.query needs to strigify
     redirect_uri: REDIRECT_URI 
   },
-  headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-  },
-})
+  // headers: {
+  //     'content-type': 'application/x-www-form-urlencoded',
+  //     Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+  // },
+// })
+// .then( response => {
+//   // console.log(response.data);
+//   // console.log(response.status);
+//   // console.log(response.headers);
+  // console.log('hello');
+});
 
 });
 
