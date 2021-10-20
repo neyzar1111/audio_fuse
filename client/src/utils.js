@@ -16,3 +16,9 @@ export function ScrollToTop(){
     },[pathname]);
     return null;
 }
+// formatting duration of songs example: 216699 -> '3:36'
+export const formatDuration = ms => {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor(((ms % 60000) / 1000));
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
