@@ -9,9 +9,39 @@ import {
     Link,
     useLocation
 } from "react-router-dom";
+import styled, { createGlobalStyle }from 'styled-components/macro';
 
 //==============Component==================
+const GlobalStyle = createGlobalStyle`
+   :root{
+    --black: #121212;
+    --pink:#ff0a66;
+    --white:#ffffff;
+   }
+  html {
+    box-sizing: border-box;
+  }
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+  }
+`;
+const StyledLoginButton = styled.a`
+    background-color: var(--pink);
+    color: var(--black);
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: inline-block;
+`
 
 function App() {
   const [token , setToken] = useState(null);
@@ -33,15 +63,15 @@ function App() {
 
   return (
     <div className="App">
+        <GlobalStyle />
       <header className="App-header">
-
         {!token ? (
-            <a
+            <StyledLoginButton
                 className="App-link"
                 href="http://localhost:8888/login"
             >
               Login with Spotify
-            </a>
+            </StyledLoginButton>
         ):(
             <Router>
                 <ScrollToTop />
