@@ -67,7 +67,13 @@ axios({
     grant_type: 'authorization_code',
     code: code, //param from res.query
     redirect_uri: REDIRECT_URI 
-  }
+  },
+  headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+  },
+})
+
 });
 
 app.listen(port, ()=>{
