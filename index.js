@@ -51,13 +51,24 @@ const scope = 'user-read-private user-read-email';
 // TODO: Add state and scope params
 
 // redirect to the spotify account service authorize url login page from http://localhost:8888/login
-res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`);
+res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&state=state&scope=scope`);
 });
 // https://accounts.spotify.com/en/authorize?client_id=d88b20c9c8f04ffc9482309a3210bbcc&response_type=code&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback
 
 app.get('/callback', (req, res) => {
-  res.send('callback');
-})
+  // res.send('callback');
+  const code = req.query.code || null;
+
+// Send a POST request
+axios({
+  method: 'post',
+  url: 'https://accounts.spotify.com/api/token',
+  data: {
+    grant_type: 'authorization_code',
+    code: code, //param from res.query
+    redirect_uri: REDIRECT_URI 
+  }
+});
 
 app.listen(port, ()=>{
   console.log(`express app listening at http://localhost:${port}`);
