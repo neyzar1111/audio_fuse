@@ -2,7 +2,7 @@
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-export const catErrors = fn =>{
+export const catchErrors = fn =>{
     return function (...args){
         return fn( ...args).catch((err)=>{
             console.error(err)
