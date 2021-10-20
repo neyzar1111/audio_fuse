@@ -1,5 +1,5 @@
 //Higher-order function for async/await error handling
-
+import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
 export const catErrors = fn =>{

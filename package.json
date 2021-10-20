@@ -1,7 +1,7 @@
 {
-  "name": "project-spotify",
+  "name": "Audio Fuse",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full stack web app to visualize personalized Spotify music",
   "main": "index.js",
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
