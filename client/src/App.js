@@ -11,7 +11,7 @@ import {
     useLocation
 } from "react-router-dom";
 import {GlobalStyle} from "./styles";
-import {Login,Profile} from "./pages";
+import {Login,Profile,TopArtists} from "./pages";
 import styled from "styled-components/macro";
 
 
@@ -66,7 +66,7 @@ function App() {
                     <ScrollToTop />
                     <Switch>
                         <Route path="/top-artists">
-                            <h1>Top-Artists</h1>
+                           <TopArtists />
                         </Route>
                         <Route path="/top-tracks">
                             <h1>Top Tracks</h1>
