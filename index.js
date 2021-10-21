@@ -93,19 +93,30 @@ axios({
   // console.log(response.status);
   // console.log(response.headers);
   // console.log(response);
-  // if-else
   if(response.status === 200) {
-    // ERR:  Cannot set headers after they are sent to the client
+   // multi request with url: https://api.spotify.com/v1/me, header with access token and token type, success
+    const {access_token, token_type} = response.data;
+
+    axios.get('https://api.spotify.com/v1/me', {
+      headers: {
+          Authorization: `${token_type} ${access_token}`
+      }
+    })
+    .then( response => {
+    // ERR:  Cannot set headers after they are sent to the client. Use stringify
     res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-  } else {
-    res.send(response);
-  }
+    })
+    .catch (error => {
+      res.send(error);
+     }) 
+} else {
+  res.send(response);
+}
 }) // close then
-.catch (error => {
- res.send(error);
-}) 
 
 }); // close get method
+
+
 
 app.listen(port, ()=>{
   console.log(`express app listening at http://localhost:${port}`);
