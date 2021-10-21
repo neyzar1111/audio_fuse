@@ -49,12 +49,12 @@ app.get('/login', (req, res)=> {
 
   // set cookie - name to value
   // https://stackoverflow.com/questions/49733714/spotifywebapi-trouble-with-authentication-authorization-code-in-nodejs
-const state = generateRandomString(16);
-res.cookie(stateKey, state);
+  const state = generateRandomString(16);
+  res.cookie(stateKey, state);
 
-const scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email';
 
-const queryParams = querystring.stringify({
+  const queryParams = querystring.stringify({
     // SyntaxError: Invalid shorthand property initializer - https://stackoverflow.com/questions/42006503/invalid-shorthand-property-initializer
     client_id: CLIENT_ID,
     response_type: 'code',
@@ -64,7 +64,7 @@ const queryParams = querystring.stringify({
   });
 
 // redirect to the spotify account service authorize url login page from http://localhost:8888/login
-res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+  res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
 // https://accounts.spotify.com/en/authorize?client_id=d88b20c9c8f04ffc9482309a3210bbcc&response_type=code&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback
 
@@ -75,15 +75,15 @@ app.get('/callback', (req, res) => {
   // error: Illegal redirect url - https://accounts.spotify.com/authorize?client_id=d88b20c9c8f04ffc9482309a3210bbcc&response_type=code&redirect_uri=%22http://localhost:8888/callback%22&state=state&scope=scope
 
 // Send a POST request
-axios({
-  method: 'post',
-  url: 'https://accounts.spotify.com/api/token',
-  data: querystring.stringify({
-    grant_type: 'authorization_code',
-    code: code, //param from res.query needs to stringify
-    redirect_uri: REDIRECT_URI 
-  }),
-  headers: {
+  axios({
+    method: 'post',
+    url: 'https://accounts.spotify.com/api/token',
+    data: querystring.stringify({
+      grant_type: 'authorization_code',
+      code: code, //param from res.query needs to stringify
+      redirect_uri: REDIRECT_URI
+    }),
+    headers: {
       'content-type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
   },
@@ -119,7 +119,6 @@ axios({
   res.send(error);
  });
 }); // close get method
-
 
 // refresh token
 app.get('/refresh_token', (req, res)=> {

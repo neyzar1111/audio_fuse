@@ -1,5 +1,5 @@
 {
-  "name": "Audio Fuse",
+  "name": "",
   "version": "1.0.0",
   "description": "A full stack web app to visualize personalized Spotify music",
   "main": "index.js",
@@ -9,12 +9,19 @@
     "client": "cd client && npm start",
     "postinstall": "cd client && npm install"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neyzar1111/audio_fuse.git"
+  },
   "keywords": [],
   "author": "Aichurok Enazarova & Anna Ikoki",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neyzar1111/audio_fuse/issues"
+  },
+  "homepage": "https://github.com/neyzar1111/audio_fuse#readme",
   "dependencies": {
-    "axios": "^0.22.0",
-    "babel-plugin-macros": "^3.1.0",
+    "axios": "^0.23.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "react-router-dom": "^5.3.0"
