@@ -86,26 +86,64 @@ app.get('/callback', (req, res) => {
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-    },
-  })
-      .then( response => {
-        // console.log(response.data);
-        // console.log(response.status);
-        // console.log(response.headers);
-        // console.log(response);
-        // if-else
-        if(response.status === 200) {
-          // ERR:  Cannot set headers after they are sent to the client
-          res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-        } else {
-          res.send(response);
-        }
-      }) // close then
-      .catch (error => {
-        res.send(error);
-      })
+  },
+})
+.then( response => {
+  // console.log(response.data); //or .status, or .headers
+  if(response.status === 200) {
+   // multi request with url: https://api.spotify.com/v1/me, header with access token and token type, success
+  //  Taste with http://localhost:8888/refresh_token?refresh_token=${refresh_token}
+    const {access_token, token_type} = response.data;
 
+  // replace for test
+    axios.get(`https://api.spotify.com/v1/me`, {
+      headers: {
+          Authorization: `${token_type} ${access_token}`
+      }
+    })
+    // test: FAIL
+    // const {refresh_token} = response.data;
+    // axios.get(`http://localhost:8888/refresh_token?refresh_token=${refresh_token}`)
+    .then(response => {
+    // ERR:  Cannot set headers after they are sent to the client. Use stringify
+    res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+    })
+    .catch (error => {
+      res.send(error);
+     }) 
+} else {
+  res.send(response);
+}
+}) // close then
+.catch (error => {
+  res.send(error);
+ });
 }); // close get method
+
+// refresh token
+app.get('/refresh_token', (req, res)=> {
+  const {refresh_token} = req.query;
+
+axios({
+  method: 'post',
+  url: 'https://accounts.spotify.com/api/token',
+  data: querystring.stringify({
+    grant_type: 'refresh_token',
+    refresh_token: refresh_token
+  }),
+  headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+  },
+})
+.then( response => {
+res.send(response.data);
+})
+.catch (error => {
+  res.send(error);
+ }); 
+}); // close get method
+
 
 app.listen(port, ()=>{
   console.log(`express app listening at http://localhost:${port}`);
