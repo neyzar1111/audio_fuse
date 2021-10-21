@@ -1,5 +1,5 @@
 {
-  "name": "audio_fuse",
+  "name": "Audio Fuse",
   "version": "1.0.0",
   "description": "A full stack web app to visualize personalized Spotify music",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/neyzar1111/audio_fuse.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aichurok Enazarova & Anna Ikoki",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/neyzar1111/audio_fuse/issues"
