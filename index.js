@@ -100,10 +100,10 @@ app.get('/callback', (req, res) => {
  const queryParams = querystring.stringify({
         access_token,
         refresh_token
-    });
+    })
 
         // redirect to react app
-     res.redirect('http://localhost:3000/?${queryParamsarams}')
+     res.redirect('http://localhost:3000/?${queryParams}');
 
     // pass along tokens in query params
 
@@ -124,7 +124,8 @@ app.get('/callback', (req, res) => {
     //   res.send(error);
     //  }) 
 } else {
-  res.send(response);
+  // res.send(response);
+  res.redirect(`/?${querystring.stringify({error: 'invalid_token'})}`);
 }
 }) // close then
 .catch (error => {
