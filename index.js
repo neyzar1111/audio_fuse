@@ -97,6 +97,10 @@ app.get('/callback', (req, res) => {
 
     const {access_token, refresh_token} = response.data;
 
+ const queryParams = querystring.stringify({
+        access_token,
+        refresh_token
+    });
 
         // redirect to react app
      res.redirect('http://localhost:3000/?${queryParamsarams}')
