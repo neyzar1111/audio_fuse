@@ -91,9 +91,9 @@ app.get('/callback', (req, res) => {
 .then( response => {
   // console.log(response.data); //or .status, or .headers
   if(response.status === 200) {
-   // multi request with url: https://api.spotify.com/v1/me, header with access token and token type, success
+  // multi request with url: https://api.spotify.com/v1/me, header with access token and token type, success
   //  Taste with http://localhost:8888/refresh_token?refresh_token=${refresh_token}
-    // const {access_token, token_type} = response.data;
+  // const {access_token, token_type} = response.data;
 
     const {access_token, refresh_token} = response.data;
 
@@ -103,7 +103,7 @@ app.get('/callback', (req, res) => {
     })
 
         // redirect to react app
-     res.redirect('http://localhost:3000/?${queryParams}');
+     res.redirect(`http://localhost:3000/?${queryParams}`);
 
     // pass along tokens in query params
 
