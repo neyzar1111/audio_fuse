@@ -11,7 +11,7 @@ import {
     useLocation
 } from "react-router-dom";
 import {GlobalStyle} from "./styles";
-import {Login, Profile, TopArtists, TopTracks, Playlists} from "./pages";
+import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist} from "./pages";
 import styled from "styled-components/macro";
 
 
@@ -36,60 +36,60 @@ const StyledLogoutButton = styled.button`
 
 
 function App() {
-  const [token , setToken] = useState(null);
-  const [profile, setProfile] = useState(null);
+    const [token , setToken] = useState(null);
+    const [profile, setProfile] = useState(null);
 
-  useEffect(()=>{
-    setToken(accessToken);
-    const fetchData = async()=> {
-        const {data} = await getCurrentUserProfile();
-        setProfile(data);
-        console.log(data)
-    }
-
-      catchErrors( fetchData());
-
-
-  }, [])
-
-
-  return (
-    <div className="App">
-        <GlobalStyle />
-      <header className="App-header">
-        {!token ? (
-          <Login/>
-        ):(
-            <>
-                <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
-                <Router>
-                    <ScrollToTop />
-                    <Switch>
-                        <Route path="/top-artists">
-                           <TopArtists />
-                        </Route>
-                        <Route path="/top-tracks">
-                            <TopTracks />
-                        </Route>
-                        <Route path="/playlists/:id">
-                            <h1>Playlist</h1>
-                        </Route>
-                        <Route path="/playlists">
-                            <Playlists />
-                        </Route>
-                        <Route path="/">
-                            <Profile />
-                        </Route>
-                    </Switch>
-                </Router>
-            </>
-        )
-
+    useEffect(()=>{
+        setToken(accessToken);
+        const fetchData = async()=> {
+            const {data} = await getCurrentUserProfile();
+            setProfile(data);
+            console.log(data)
         }
 
-      </header>
-    </div>
-  );
+        catchErrors( fetchData());
+
+
+    }, [])
+
+
+    return (
+        <div className="App">
+            <GlobalStyle />
+            <header className="App-header">
+                {!token ? (
+                    <Login/>
+                ):(
+                    <>
+                        <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+                        <Router>
+                            <ScrollToTop />
+                            <Switch>
+                                <Route path="/top-artists">
+                                    <TopArtists />
+                                </Route>
+                                <Route path="/top-tracks">
+                                    <TopTracks />
+                                </Route>
+                                <Route path="/playlists/:id">
+                                    <Playlist />
+                                </Route>
+                                <Route path="/playlists">
+                                    <Playlists />
+                                </Route>
+                                <Route path="/">
+                                    <Profile />
+                                </Route>
+                            </Switch>
+                        </Router>
+                    </>
+                )
+
+                }
+
+            </header>
+        </div>
+    );
 }
 
 export default App;
