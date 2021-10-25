@@ -45,8 +45,7 @@ const refreshToken = async () => {
         // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
         if (!LOCALSTORAGE_VALUES.refreshToken ||
             LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
-            (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
-        ) {
+            (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000) {
             console.error('No refresh token available');
             logout();
         }
@@ -132,6 +131,11 @@ export const getTopTracks = (time_range = 'short_term') => {
 //Getting playlist by id
 export  const getPlaylistById = playlist_id =>{
     return axios.get(`/playlists/${playlist_id}`);
+}
+
+//Getting Audio Features for Several Tracks
+export const getAudioFeaturesForTracks = ids =>{
+    return axios(`/audio-features?ids=${ids}`);
 }
 
 
