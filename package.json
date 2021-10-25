@@ -9,9 +9,17 @@
     "client": "cd client && npm start",
     "postinstall": "cd client && npm install"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neyzar1111/audio_fuse.git"
+  },
   "keywords": [],
   "author": "Aichurok Enazarova & Anna Ikoki",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neyzar1111/audio_fuse/issues"
+  },
+  "homepage": "https://github.com/neyzar1111/audio_fuse#readme",
   "dependencies": {
     "axios": "^0.22.0",
     "babel-plugin-macros": "^3.1.0",
