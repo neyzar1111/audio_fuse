@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { getPlaylistById, getAudioFeaturesForTracks } from '../spotify';
 import { catchErrors } from '../utils';
-import { TrackList, SectionWrapper } from '../components';
-import { StyledHeader } from '../styles';
+import { TrackList, SectionWrapper, Loader } from '../components';
+import { StyledHeader, StyledDropdown } from '../styles';
 
 const Playlist = () => {
     const { id } = useParams();
@@ -156,28 +156,26 @@ const Playlist = () => {
 
                     <main>
                         <SectionWrapper title="Playlist" breadcrumb={true}>
-                            <div>
-                                <label className="sr-only" htmlFor="order-select">
-                                    Sort tracks
-                                </label>
+                            <StyledDropdown active={!!sortValue}>
+                                <label className="sr-only" htmlFor="order-select">Sort tracks</label>
                                 <select
                                     name="track-order"
                                     id="order-select"
-                                    onChange={e=>setSortValue(e.target.value)}
+                                    onChange={e => setSortValue(e.target.value)}
                                 >
-                                    <option value=" ">Sort tracks</option>
-                                    {sortOptions.map((option,i)=>(
+                                    <option value="">Sort tracks</option>
+                                    {sortOptions.map((option, i) => (
                                         <option value={option} key={i}>
-                                            {
-                                                `${option.charAt(0).toUpperCase()}${option.slice(1)}`
-                                            }
+                                            {`${option.charAt(0).toUpperCase()}${option.slice(1)}`}
                                         </option>
                                     ))}
-                                    
                                 </select>
-                            </div>
-                            {sortedTracks && (
+                            </StyledDropdown>
+
+                            {sortedTracks ? (
                                 <TrackList tracks={sortedTracks} />
+                            ) : (
+                                <Loader />
                             )}
                         </SectionWrapper>
                     </main>
