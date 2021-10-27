@@ -25,7 +25,7 @@ const StyledDropdown = styled.div`
   select {
     -webkit-appearance: none;
     appearance: none;
-    background-color: ${props => props.active ? 'var(--pink)' : 'black'};
+    background-color: ${props =>props.active?  'var(--pink)' : 'black'};
     color: white;
     border: 0;
     border-radius: var(--border-radius-subtle);

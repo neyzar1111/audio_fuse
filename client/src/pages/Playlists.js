@@ -1,4 +1,4 @@
-import {PlaylistsGrid, SectionWrapper} from "../components";
+import {Loader, PlaylistsGrid, SectionWrapper} from "../components";
 import {useEffect, useState} from "react";
 import {getCurrentUserPlaylists} from "../spotify";
 import {catchErrors} from "../utils";
@@ -51,8 +51,10 @@ const Playlists = () => {
         <>
             <main>
                 <SectionWrapper title='Playlists' breadcrumb="true">
-                    {playlists && (
+                    {playlists ? (
                         <PlaylistsGrid playlists={playlists} />
+                    ):(
+                        <Loader />
                     )}
                 </SectionWrapper>
             </main>
