@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { catchErrors } from '../utils';
 import {StyledHeader} from "../styles";
-import {SectionWrapper, ArtistsGrid, TrackList, PlaylistsGrid, Loader} from "../components";
+import {SectionWrapper, ArtistsGrid, TrackList, PlaylistsGrid, Loader, Player} from "../components";
 import {
     getCurrentUserProfile,
     getCurrentUserPlaylists,
     getTopArtists,
-    getTopTracks
+    getTopTracks,
+    accessToken
 } from '../spotify';
 
 
@@ -15,6 +16,12 @@ const Profile = () => {
     const [playlists, setPlaylists] = useState(null);
     const [topArtists, setTopArtists] = useState(null);
     const [topTracks, setTopTracks] = useState(null);
+    const [playingTrack, setPlayingTrack] = useState(null);
+
+    const chooseTrack = (track) =>{
+        setPlayingTrack(track)
+    }
+
 
     useEffect(() => {
 
@@ -69,12 +76,13 @@ const Profile = () => {
                                 </SectionWrapper>
                                 {/*top tracks*/}
                                 <SectionWrapper title="Top tracks this month" seeAllLink='/top-tracks'>
-                                    <TrackList tracks={topTracks.items} />
+                                    <TrackList tracks={topTracks.items} chooseTrack={chooseTrack} />
                                 </SectionWrapper>
                                 {/*playlists*/}
                                 <SectionWrapper title='Playlists' seeAllLink='/playlists'>
                                     <PlaylistsGrid playlists={playlists.items.slice(0,10)} />
                                 </SectionWrapper>
+
                             </main>
                         ) : (
                             <Loader />
@@ -82,6 +90,7 @@ const Profile = () => {
                     </div>
                 </>
             )}
+            <Player accessToken={accessToken} trackUri={playingTrack?.uri } isPlaying={true}/>
         </>
     )
 };
