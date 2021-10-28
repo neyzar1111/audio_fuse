@@ -7,20 +7,16 @@ import {
     getCurrentUserPlaylists,
     getTopArtists,
     getTopTracks,
-    accessToken
+
 } from '../spotify';
 
 
-const Profile = () => {
+const Profile = ({chooseTrack}) => {
     const [profile, setProfile] = useState(null);
     const [playlists, setPlaylists] = useState(null);
     const [topArtists, setTopArtists] = useState(null);
     const [topTracks, setTopTracks] = useState(null);
-    const [playingTrack, setPlayingTrack] = useState(null);
 
-    const chooseTrack = (track) =>{
-        setPlayingTrack(track)
-    }
 
 
     useEffect(() => {
@@ -90,7 +86,7 @@ const Profile = () => {
                     </div>
                 </>
             )}
-            <Player accessToken={accessToken} trackUri={playingTrack?.uri } isPlaying={true}/>
+
         </>
     )
 };

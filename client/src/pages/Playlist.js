@@ -6,7 +6,7 @@ import { catchErrors } from '../utils';
 import { TrackList, SectionWrapper, Loader } from '../components';
 import { StyledHeader, StyledDropdown } from '../styles';
 
-const Playlist = () => {
+const Playlist = ({chooseTrack}) => {
     const { id } = useParams();
     const [playlist, setPlaylist] = useState(null);
     const [tracksData, setTracksData] = useState(null);
@@ -173,7 +173,7 @@ const Playlist = () => {
                             </StyledDropdown>
 
                             {sortedTracks ? (
-                                <TrackList tracks={sortedTracks} />
+                                <TrackList tracks={sortedTracks} chooseTrack={chooseTrack} />
                             ) : (
                                 <Loader />
                             )}

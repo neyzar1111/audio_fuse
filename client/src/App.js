@@ -13,7 +13,7 @@ import {
 import {GlobalStyle} from "./styles";
 import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist} from "./pages";
 import styled from "styled-components/macro";
-
+import {Player} from "./components";
 
 
 //==============Component==================
@@ -38,6 +38,11 @@ const StyledLogoutButton = styled.button`
 function App() {
     const [token , setToken] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [playingTrack, setPlayingTrack] = useState();
+
+    const chooseTrack = (track) =>{
+        setPlayingTrack(track)
+    }
 
     useEffect(()=>{
         setToken(accessToken);
@@ -61,24 +66,26 @@ function App() {
                     <Login/>
                 ):(
                     <>
-                        <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+                        <Player  accessToken={token} trackUri={playingTrack?.uri }/>
+
                         <Router>
+                            <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
                             <ScrollToTop />
                             <Switch>
                                 <Route path="/top-artists">
-                                    <TopArtists />
+                                    <TopArtists  chooseTrack={chooseTrack} />
                                 </Route>
                                 <Route path="/top-tracks">
-                                    <TopTracks />
+                                    <TopTracks chooseTrack={chooseTrack} />
                                 </Route>
                                 <Route path="/playlists/:id">
-                                    <Playlist />
+                                    <Playlist  chooseTrack={chooseTrack}/>
                                 </Route>
                                 <Route path="/playlists">
-                                    <Playlists />
+                                    <Playlists chooseTrack={chooseTrack} />
                                 </Route>
                                 <Route path="/">
-                                    <Profile />
+                                    <Profile  chooseTrack={chooseTrack} />
                                 </Route>
                             </Switch>
                         </Router>
