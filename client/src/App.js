@@ -66,8 +66,6 @@ function App() {
                     <Login/>
                 ):(
                     <>
-                        <Player  accessToken={token} trackUri={playingTrack?.uri }/>
-
                         <Router>
                             <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
                             <ScrollToTop />
@@ -89,6 +87,7 @@ function App() {
                                 </Route>
                             </Switch>
                         </Router>
+                        <Player  accessToken={token} trackUri={playingTrack?.uri }/>
                     </>
                 )
 
