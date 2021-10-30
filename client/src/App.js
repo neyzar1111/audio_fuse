@@ -7,11 +7,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useLocation
 } from "react-router-dom";
 import {GlobalStyle} from "./styles";
-import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist} from "./pages";
+import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts} from "./pages";
 import styled from "styled-components/macro";
 import {Player} from "./components";
 
@@ -38,7 +36,8 @@ const StyledLogoutButton = styled.button`
 function App() {
     const [token , setToken] = useState(null);
     const [profile, setProfile] = useState(null);
-    const [playingTrack, setPlayingTrack] = useState();
+    const [playingTrack, setPlayingTrack] = useState(null);
+
 
     const chooseTrack = (track) =>{
         setPlayingTrack(track)
@@ -53,7 +52,6 @@ function App() {
         }
 
         catchErrors( fetchData());
-
 
     }, [])
 
@@ -82,7 +80,11 @@ function App() {
                                 <Route path="/playlists">
                                     <Playlists chooseTrack={chooseTrack} />
                                 </Route>
-                                <Route path="/">
+
+                                <Route path="/podcasts">
+                                    <Podcasts   />
+                                </Route>
+                                <Route exact path="/">
                                     <Profile  chooseTrack={chooseTrack} />
                                 </Route>
                             </Switch>
