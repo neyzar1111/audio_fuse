@@ -14,7 +14,7 @@ const StyledGrid = styled.ul`
   }
 
   .grid__item {
-    background-color: var(--near-black);
+    background-color: var(--light-grey);
     border-radius: var(--border-radius-subtle);
     transition: background-color 0.3s ease;
     cursor: default;
@@ -72,7 +72,7 @@ const StyledGrid = styled.ul`
 
   .grid__item__label {
     font-size: var(--fz-sm);
-    color: var(--light-grey);
+    color: var(--grey);
   }
 `;
 

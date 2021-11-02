@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   align-items: flex-end;
   position: relative;
   background: linear-gradient(0deg, rgba(14,25,25,1) 0%, rgba(147,155,201,1) 100%);
-  background-color: var(--grey);
+  background-color: var(--light-grey);
   height: 30vh;
   max-height: 500px;
   min-height: 250px;
@@ -78,7 +78,7 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     font-size: var(--fz-sm);
-    color: var(--light-grey);
+    color: var(--gray);
     margin: 0;
 
     span {
@@ -89,7 +89,7 @@ const StyledHeader = styled.header`
         content: '•';
         display: block;
         margin: 0 var(--spacing-xs);
-        color: var(--light-grey);
+        color: var(--gray);
         font-size: 8px;
       }
     }

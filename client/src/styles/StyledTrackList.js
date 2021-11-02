@@ -11,7 +11,7 @@ const StyledTrackList = styled.ul`
     grid-template-columns: 20px 1fr;
     grid-gap: var(--spacing-md);
     padding: var(--spacing-xs);
-    color: var(--light-grey);
+    color: var(--gray);
     font-size: var(--fz-sm);
     border-radius: var(--border-radius-subtle);
     transition: background-color 0.3s ease;
@@ -25,6 +25,7 @@ const StyledTrackList = styled.ul`
     &:hover,
     &:focus {
       background-color: var(--dark-grey);
+      color: var(--white);
     }
   }
 

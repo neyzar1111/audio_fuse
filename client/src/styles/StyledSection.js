@@ -37,7 +37,7 @@ const StyledSection = styled.section`
     color: var(--light-grey);
 
     &::after {
-      content: '/';
+      content: '>';
       display: block;
       margin: 0 var(--spacing-sm);
     }
