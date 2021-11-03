@@ -1,11 +1,15 @@
 import styled from 'styled-components/macro';
 
 const StyledAudioList = styled.div`
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-gap: var(--spacing-xs);
+  margin:0;
+  padding:0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: var(--spacing-sm);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: var(--spacing-lg);
+  }
     .audio__item{
         padding: var(--spacing-xs);
         color: var(--light-grey);
@@ -13,7 +17,7 @@ const StyledAudioList = styled.div`
         border-radius: var(--border-radius-subtle);
         transition: background-color 0.3s ease;
         cursor: default;
-        height: 100px;
+        height: 180px;
         background-color: var(--near-black);
        
         @media (min-width: 768px) {
@@ -30,8 +34,13 @@ const StyledAudioList = styled.div`
    
   }
      .audio__name {
-            color: var(--white);
-            font-size: var(--fz-md);
-        }
+         color: var(--white);
+         font-size: var(--fz-md);
+     }
+     .audio__author{
+          color: var(--grey);
+
+     }
+     
   }`;
 export default StyledAudioList;
