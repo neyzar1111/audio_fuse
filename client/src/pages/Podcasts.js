@@ -23,7 +23,7 @@ const Podcasts = () =>{
                 })
                 return find;
             })
-
+            setActive(null)
         }
 
         getSearchedItems()

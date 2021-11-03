@@ -22,6 +22,7 @@ const StyledGrid = styled.ul`
     &:hover,
     &:focus {
       background-color: var(--dark-grey);
+      color:var(--white);
 
       img {
         box-shadow: 0 8px 24px rgb(0 0 0 / 50%);

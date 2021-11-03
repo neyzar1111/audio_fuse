@@ -24,6 +24,8 @@ const StyledSection = styled.section`
     justify-content: space-between;
     align-items: stretch;
     margin-bottom: var(--spacing-xl);
+    color: var(--pink);
+
   }
 
   .section__heading {
@@ -54,7 +56,7 @@ const StyledSection = styled.section`
     display: flex;
     align-items: flex-end;
     text-transform: uppercase;
-    color: var(--light-grey);
+    color: var(--dark-pink);
     font-size: var(--fz-xxs);
     font-weight: 700;
     letter-spacing: 0.1em;
