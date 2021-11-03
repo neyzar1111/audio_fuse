@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import Data from "../Data";
 import {StyledAudioList} from "../styles";
 
-import {Audio, FilterButtons, SectionWrapper} from "../components";
+import {Audio} from "../components";
 
 const Random = () =>{
     
