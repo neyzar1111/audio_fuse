@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
   height: 30vh;
   max-height: 500px;
   min-height: 250px;
+  color: var(--white);
 
   @media (min-width: 768px) {
     min-height: 340px;
@@ -78,7 +79,7 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     font-size: var(--fz-sm);
-    color: var(--gray);
+    color: var(--light-grey);
     margin: 0;
 
     span {
@@ -89,7 +90,7 @@ const StyledHeader = styled.header`
         content: '•';
         display: block;
         margin: 0 var(--spacing-xs);
-        color: var(--gray);
+        color: var(--white);
         font-size: 8px;
       }
     }

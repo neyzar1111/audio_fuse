@@ -52,7 +52,7 @@ const StyledTrackList = styled.ul`
   }
 
   .track__item__name {
-    color: var(--white);
+    color: var(--dark-gray);
     font-size: var(--fz-md);
   }
 
