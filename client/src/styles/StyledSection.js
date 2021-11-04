@@ -36,7 +36,7 @@ const StyledSection = styled.section`
 
   .section__breadcrumb {
     display: flex;
-    color: var(--light-grey);
+    color: var(--dark-grey);
 
     &::after {
       content: '>';
