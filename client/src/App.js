@@ -1,6 +1,6 @@
 //=============Imports===================
 
-import {useState,useEffect} from "react";
+import React, {useState,useEffect} from "react";
 import {accessToken,logout, getCurrentUserProfile} from "./spotify";
 import {catchErrors, ScrollToTop} from "./utils";
 import {
@@ -8,10 +8,10 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import {GlobalStyle} from "./styles";
+import {GlobalStyle, StyledNav} from "./styles";
 import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random} from "./pages";
 import styled from "styled-components/macro";
-import {Player} from "./components";
+import {Player, Nav} from "./components";
 
 
 //==============Component==================
@@ -64,34 +64,48 @@ function App() {
                     <Login/>
                 ):(
                     <>
-                        <Router>
-                            <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
-                            <ScrollToTop />
-                            <Switch>
-                                <Route path="/top-artists">
-                                    <TopArtists  chooseTrack={chooseTrack} />
-                                </Route>
-                                <Route path="/top-tracks">
-                                    <TopTracks chooseTrack={chooseTrack} />
-                                </Route>
-                                <Route path="/playlists/:id">
-                                    <Playlist  chooseTrack={chooseTrack}/>
-                                </Route>
-                                <Route path="/playlists">
-                                    <Playlists chooseTrack={chooseTrack} />
-                                </Route>
+                        <div className="main_wrap">
 
-                                <Route path="/podcasts">
-                                    <Podcasts   />
-                                </Route>
-                                <Route path="/random">
-                                    <Random   />
-                                </Route>
-                                <Route exact path="/">
-                                    <Profile  chooseTrack={chooseTrack} />
-                                </Route>
-                            </Switch>
-                        </Router>
+                            <Router>
+                                <div className="nav_container">
+                                    <div className="nav_wrap">
+                                        <div className="logo__container">
+                                            <img className="logo" src="/assets/logo_words.png"/>
+                                        </div>
+                                        <Nav/>
+                                    </div>
+                                </div>
+                                <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+                                <ScrollToTop />
+                                <div className="container__of_pages">
+                                    <Switch>
+                                        <Route   path="/top-artists">
+                                            <TopArtists  chooseTrack={chooseTrack} />
+                                        </Route>
+                                        <Route exact path="/top-tracks">
+                                            <TopTracks chooseTrack={chooseTrack} />
+                                        </Route>
+                                        <Route exact path="/playlists/:id">
+                                            <Playlist  chooseTrack={chooseTrack}/>
+                                        </Route>
+                                        <Route exact path="/playlists">
+                                            <Playlists chooseTrack={chooseTrack} />
+                                        </Route>
+
+                                        <Route  exact path="/podcasts">
+                                            <Podcasts   />
+                                        </Route>
+                                        <Route exact path="/random">
+                                            <Random   />
+                                        </Route>
+                                        <Route exact path="/">
+                                            <Profile  chooseTrack={chooseTrack} />
+                                        </Route>
+                                    </Switch>
+                                </div>
+                            </Router>
+                        </div>
+
                         <Player  accessToken={token} trackUri={playingTrack?.uri }/>
                     </>
                 )

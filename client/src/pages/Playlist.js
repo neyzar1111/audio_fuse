@@ -133,9 +133,9 @@ const Playlist = ({chooseTrack}) => {
 
 
     return (
-        <>
+        < >
             {playlist && (
-                <>
+                <div style={{width:"100%"}}>
                     <StyledHeader>
                         <div className="header__inner">
                             {playlist.images.length && playlist.images[0].url && (
@@ -179,7 +179,7 @@ const Playlist = ({chooseTrack}) => {
                             )}
                         </SectionWrapper>
                     </main>
-                </>
+                </div>
             )}
         </>
     )

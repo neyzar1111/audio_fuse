@@ -5,7 +5,7 @@ import variables from "./variables";
 const GlobalStyle = createGlobalStyle`
   ${variables};
 
-  html {
+  html, * {
     box-sizing: border-box;
   }
 
@@ -29,7 +29,31 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font);
     font-size: var(--fz-md);
   }
-
+  .main_wrap{
+    display: flex;
+    width: 100%;
+  }
+  .nav_container{
+    position: relative;
+    min-width: 300px;
+    box-sizing: border-box;
+    padding:  var(--spacing-xxs) ;
+    height: 100%;
+  }
+  .nav_wrap{
+    position: fixed;
+    background: var(--dark-grey);
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 300px;
+  }
+  .container__of_pages{
+    width:100%;
+  }
+  .logo{
+    width: 60px;
+  }
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -.04em;
     margin: 0 0 10px;
@@ -81,8 +105,9 @@ const GlobalStyle = createGlobalStyle`
   main {
     position: relative;
     padding: var(--spacing-xxl) 0;
+    width: 100%;
   }
-
+  
   .app {
     min-height: 100vh;
   }
@@ -114,6 +139,15 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fz-lg);
     text-align: center;
     padding: var(--spacing-xxl);
+  }
+  @media (max-width: 500px) {
+  .nav_container{
+      min-width: 200px;
+  }
+  .nav_wrap{
+    width: 200px;
+    height: 100%;
+  }
   }
 `;
 

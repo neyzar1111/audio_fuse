@@ -7,3 +7,4 @@ export {default as StyledRangeButtons} from "./StyledRangeButtons";
 export {default as StyledDropdown} from "./StyledDropdown";
 export {default as StyledPlayer } from "./StyledPlayer";
 export {default as StyledAudioList} from "./StyledAudioList";
+export {default as StyledNav} from "./StyledNav";

@@ -7,6 +7,7 @@ const StyledHeader = styled.header`
   background: linear-gradient(0deg, rgba(14,25,25,1) 0%, rgba(147,155,201,1) 100%);
   background-color: var(--light-grey);
   height: 30vh;
+  width:100%
   max-height: 500px;
   min-height: 250px;
   color: var(--white);

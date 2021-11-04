@@ -7,5 +7,6 @@ export { default as Loader } from './Loader';
 export { default as Player } from './Player';
 export { default as FilterButtons } from './FilterButtons';
 export { default as Audio } from './Audio';
+export { default as Nav } from './Nav';
 
 
