@@ -8,3 +8,4 @@ export {default as StyledDropdown} from "./StyledDropdown";
 export {default as StyledPlayer } from "./StyledPlayer";
 export {default as StyledAudioList} from "./StyledAudioList";
 export {default as StyledNav} from "./StyledNav";
+export {default as StyledSearchBar} from "./StyledSearchBar";

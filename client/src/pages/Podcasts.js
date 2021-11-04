@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import Data from "../Data";
-import {StyledAudioList} from "../styles";
+import {StyledAudioList, StyledSearchBar, StyledSection} from "../styles";
 
 import {Audio, FilterButtons, SectionWrapper} from "../components";
 
@@ -10,8 +10,6 @@ const Podcasts = () =>{
     const [active, setActive] = useState(null);
 
 
-    console.log(Data.books.length)
-    console.log("check first length",search.length)
     useEffect(()=>{
         function getSearchedItems () {
             setFound(()=>{
@@ -44,16 +42,14 @@ const Podcasts = () =>{
 
     return (
         <>
-            <div className="search__bar">
-                <input type="search"  placeholder="Search..." onChange={(e)=>{setSearch(e.target.value)}}/>
-            </div>
+
            <main>
-               <SectionWrapper>
-                    <FilterButtons filterAudios={filterAudios} setActive={setActive} active={active}/>
+               <SectionWrapper className="search__bar" style={{padding:"1em", margin:"1em"}}>
+                   <label htmlFor="search" style={{display:"none"}}>Search: </label>
+                   <StyledSearchBar  name="search" type="search"  placeholder="Search..." onChange={(e)=>{setSearch(e.target.value)}}/>
                </SectionWrapper>
-               <SectionWrapper title="" seeAllLink="">
-
-
+               <SectionWrapper title="Podcasts" seeAllLink="">
+                   <FilterButtons filterAudios={filterAudios} setActive={setActive} active={active}/>
                    {found &&(
                        <StyledAudioList>
                            {found.map((book,i) => (
@@ -62,9 +58,6 @@ const Podcasts = () =>{
                        </StyledAudioList>
                         )
                     }
-
-
-
                </SectionWrapper>
 
            </main>

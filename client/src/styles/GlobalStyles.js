@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .nav_container{
     position: relative;
-    min-width: 300px;
+    min-width: 200px;
     box-sizing: border-box;
     padding:  var(--spacing-xxs) ;
     height: 100%;
@@ -46,13 +46,16 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 200px;
   }
   .container__of_pages{
     width:100%;
   }
   .logo{
     width: 60px;
+  }
+  .menuButton{
+    display:none;
   }
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -.04em;
@@ -142,12 +145,33 @@ const GlobalStyle = createGlobalStyle`
   }
   @media (max-width: 500px) {
   .nav_container{
-      min-width: 200px;
+      min-width: 150px;
   }
   .nav_wrap{
-    width: 200px;
+    width: 150px;
     height: 100%;
   }
+  }
+  @media (max-width: 400px) {
+  .nav_container{
+     display:${props => props.isActiveMenu === 'true' ? 'block' : 'none'};
+     position:fixed;
+     min-height: 100vh;
+     min-width:100vw;
+     z-index:99;
+  }
+    .nav_wrap{
+    position: fixed;
+    background: var(--dark-grey);
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+  .menuButton{
+    display:${props => props.isActiveMenu === 'true' ? 'none' : 'block'};
+  }
+
   }
 `;
 

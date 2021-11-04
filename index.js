@@ -34,21 +34,20 @@ app.get('/login', (req, res) => {
   res.cookie(stateKey, state);
 
   const scope = [
+    'streaming',
     'user-read-private',
     'user-read-email',
     'user-top-read',
-    'user-library-read',
     'user-library-modify',
     'user-read-playback-state',
-    'user-modify-playback-state',
-    'streaming'
-
+    'user-modify-playback-state'
   ].join(' ');
 
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
     redirect_uri: REDIRECT_URI,
+    state:state,
     scope: scope,
   });
 
