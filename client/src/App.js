@@ -70,7 +70,7 @@ function App() {
                         <div className="main_wrap">
 
                             <Router>
-                                <div  className={`nav_container`} >
+                                <div className="nav_container">
                                     <div className="nav_wrap">
                                         <Nav setActiveMenu={setActiveMenu}/>
                                     </div>

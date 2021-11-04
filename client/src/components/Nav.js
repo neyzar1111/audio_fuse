@@ -2,10 +2,7 @@ import React from "react";
 import {StyledNav} from "../styles";
 import {Link} from "react-router-dom";
 
-const Nav = ({setActiveMenu}) =>{
-    let checkMenu  = () =>{
-
-    }
+const Nav = () =>{
     return(
         <nav>
             <StyledNav >
