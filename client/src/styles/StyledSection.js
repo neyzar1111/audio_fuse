@@ -47,7 +47,7 @@ const StyledSection = styled.section`
     a {
       &:hover,
       &:focus {
-        color: var(--white);
+        color: var(--grey);
       }
     }
   }

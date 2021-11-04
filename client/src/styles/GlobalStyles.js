@@ -57,6 +57,8 @@ const GlobalStyle = createGlobalStyle`
   .menuButton{
     display:none;
   }
+
+
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -.04em;
     margin: 0 0 10px;
@@ -78,6 +80,14 @@ const GlobalStyle = createGlobalStyle`
     &:hover,
     &:focus {
       text-decoration: underline;
+    }
+  }
+  .list__item a{
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      text-decoration: none;
     }
   }
 
