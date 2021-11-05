@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-
+import {TextField} from "@material-ui/core";
 const StyledLoginContainer = styled.main `
     display:flex;
     flex-direction:column;
@@ -12,13 +12,13 @@ const StyledLoginContainer = styled.main `
         justify-content:space-between;
         align-items:center;
         text-align:center;
-        background-color: rgba(200, 200, 200, 0.47);
+        background-color: rgba(200, 200, 200, 0.67);
         padding:30px;
         min-width: 30em;
         min-height: 40em;
         border-radius: var(--border-radius-pill);
         .logo_login{
-            max-width: 15em;
+            max-width: 10em;
         }
     }
 `;
@@ -43,7 +43,15 @@ const StyledVideoLoginPageBackgroundVideo = styled.video`
     position: fixed;
     min-width: 100vw;
     min-height: 100vh;
-`
+`;
+
+const StyledForm = styled.form`
+    height: 14em;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin-bottom: var(--spacing-xl);
+`;
 const LOGIN_URI =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:8888/login'
@@ -59,12 +67,34 @@ const Login = () =>{
                 <div className="login__container">
                     <div>
                         <div>
-                            <img className="logo_login" alt="logo image" src="/assets/logo.png"/>
                             <div>
                                 <h1>Audio Fuse</h1>
                             </div>
-                        </div>
+                            <img className="logo_login" alt="logo image" src="/assets/logo.png"/>
 
+                        </div>
+                        <h3>Login</h3>
+                        <StyledForm>
+                            <TextField
+                                variant="filled"
+                                type="email"
+                                label="e-mail"
+                            />
+                            <TextField
+                                variant="filled"
+                                type="password"
+                                label="password"
+
+                            />
+                            <TextField
+                                variant="outlined"
+                                type="submit"
+                            />
+                        </StyledForm>
+
+                    </div>
+                    <div>
+                        <p>or</p>
                     </div>
                     <StyledLoginButton href={LOGIN_URI}>
                         Login with Spotify
