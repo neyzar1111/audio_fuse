@@ -6,6 +6,21 @@ const StyledLoginContainer = styled.main `
     justify-content:center;
     align-items:center;
     height: 100vh;
+    .login__container{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        align-items:center;
+        text-align:center;
+        background-color: rgba(200, 200, 200, 0.47);
+        padding:30px;
+        min-width: 30em;
+        min-height: 40em;
+        border-radius: var(--border-radius-pill);
+        .logo_login{
+            max-width: 15em;
+        }
+    }
 `;
 
 const StyledLoginButton = styled.a `
@@ -24,7 +39,11 @@ const StyledLoginButton = styled.a `
  }
  
 `;
-
+const StyledVideoLoginPageBackgroundVideo = styled.video`
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+`
 const LOGIN_URI =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:8888/login'
@@ -33,7 +52,9 @@ const LOGIN_URI =
 const Login = () =>{
     return(
         <div className="login_page_container">
-
+            <div>
+                <StyledVideoLoginPageBackgroundVideo  src="/assets/space.mp4" muted loop autoPlay></StyledVideoLoginPageBackgroundVideo>
+            </div>
             <StyledLoginContainer>
                 <div className="login__container">
                     <div>
