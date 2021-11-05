@@ -32,11 +32,26 @@ const LOGIN_URI =
 
 const Login = () =>{
     return(
-        <StyledLoginContainer>
-            <StyledLoginButton href={LOGIN_URI}>
-                Login with Spotify
-            </StyledLoginButton>
-        </StyledLoginContainer>
+        <div className="login_page_container">
+
+            <StyledLoginContainer>
+                <div className="login__container">
+                    <div>
+                        <div>
+                            <img className="logo_login" alt="logo image" src="/assets/logo.png"/>
+                            <div>
+                                <h1>Audio Fuse</h1>
+                            </div>
+                        </div>
+
+                    </div>
+                    <StyledLoginButton href={LOGIN_URI}>
+                        Login with Spotify
+                    </StyledLoginButton>
+                </div>
+            </StyledLoginContainer>
+
+        </div>
     )
 }
 
