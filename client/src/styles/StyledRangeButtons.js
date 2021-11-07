@@ -5,6 +5,7 @@ const StyledRangeButtons = styled.ul`
   list-style: none;
   margin: 0 0 var(--spacing-lg) 0;
   padding: 0;
+  flex-wrap:wrap;
 
   @media (min-width: 768px) {
     position: absolute;
@@ -14,7 +15,7 @@ const StyledRangeButtons = styled.ul`
   }
 
   li {
-    margin-right: var(--spacing-xs);
+    margin: var(--spacing-xxs);
 
     @media (min-width: 768px) {
       margin-left: var(--spacing-xs);

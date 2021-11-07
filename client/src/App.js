@@ -12,6 +12,8 @@ import {GlobalStyle, StyledNav} from "./styles";
 import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random} from "./pages";
 import styled from "styled-components/macro";
 import {Player, Nav} from "./components";
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
 
 
 //==============Component==================
@@ -37,6 +39,7 @@ function App() {
     const [token , setToken] = useState(null);
     const [profile, setProfile] = useState(null);
     const [playingTrack, setPlayingTrack] = useState(null);
+    const [isActiveMenu, setActiveMenu] = useState(false);
 
 
     const chooseTrack = (track) =>{
@@ -58,7 +61,7 @@ function App() {
 
     return (
         <div className="App">
-            <GlobalStyle />
+            <GlobalStyle isActiveMenu={`${isActiveMenu}`}/>
             <header className="App-header">
                 {!token ? (
                     <Login/>
@@ -69,12 +72,16 @@ function App() {
                             <Router>
                                 <div className="nav_container">
                                     <div className="nav_wrap">
-                                        <div className="logo__container">
-                                            <img className="logo" src="/assets/logo_words.png"/>
-                                        </div>
-                                        <Nav/>
+                                        <Nav setActiveMenu={setActiveMenu}/>
                                     </div>
                                 </div>
+
+                                <div style={{position:"absolute", zIndex: "55", }}  className="menuButton">
+                                    <IconButton   onClick={()=> setActiveMenu(true)}>
+                                        <MenuIcon />
+                                    </IconButton>
+                                </div>
+
                                 <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
                                 <ScrollToTop />
                                 <div className="container__of_pages">

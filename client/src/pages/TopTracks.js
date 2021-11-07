@@ -4,7 +4,7 @@ import {catchErrors} from "../utils";
 import {SectionWrapper, TrackList, TimeRangeButtons, Loader} from "../components";
 
 
-const TopTracks =()=> {
+const TopTracks =({chooseTrack})=> {
     const [topTracks, setTopTracks] = useState(null);
     const [activeRange, setActiveRange] = useState("short");
 
@@ -22,9 +22,9 @@ const TopTracks =()=> {
             <main>
 
                 {topTracks ?(
-                    <SectionWrapper title="Top artists" breadcrumb="true">
+                    <SectionWrapper title="Top tracks" breadcrumb="true">
                         <TimeRangeButtons activeRange={activeRange} setActiveRange={setActiveRange} />
-                        <TrackList tracks={topTracks.items} />
+                        <TrackList  chooseTrack={chooseTrack} tracks={topTracks.items} />
                     </SectionWrapper>
                 ) : (
                     <Loader />

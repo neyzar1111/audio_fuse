@@ -43,7 +43,6 @@ const StyledHeader = styled.header`
 
   img.header__img {
     width: 10em;
-    height:10em;
     min-width: 5em;
     min-height: 5em;
     
