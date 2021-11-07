@@ -48,7 +48,7 @@ function App() {
         const fetchData = async()=> {
             const {data} = await getCurrentUserProfile();
             setProfile(data);
-            console.log(data)
+            // console.log(data)
         }
 
         catchErrors( fetchData());
@@ -96,7 +96,7 @@ function App() {
                                             <Podcasts   />
                                         </Route>
                                         <Route exact path="/random">
-                                            <Random   />
+                                            <Random  chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route exact path="/">
                                             <Profile  chooseTrack={chooseTrack} />

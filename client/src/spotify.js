@@ -142,6 +142,10 @@ export const getAudioFeaturesForTracks = ids =>{
     return axios(`/audio-features?ids=${ids}`);
 }
 
+// Getting Song!! Working on this now
+export const getSongRandom = (limit = 50) => axios.get(`/browse/categories?limit=${limit}`);
+console.log(getSongRandom());
+
 
 const instance = axios.create({
     baseURL: 'https://musicbrainz.org/ws/2/',

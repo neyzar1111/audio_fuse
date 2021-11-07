@@ -1,16 +1,36 @@
 import {useEffect, useState} from "react";
-import Data from "../Data";
-import {StyledAudioList} from "../styles";
+import styled from 'styled-components/macro';
+import { getSongRandom } from '../spotify';
+import { catchErrors } from '../utils';
+import { StyledHeader } from '../styles';
+import { SectionWrapper, RandomsGrid } from '../components';
 
-import {Audio} from "../components";
+const Random = () => {
+      const [random, setRandom] = useState(null);
+  console.log(random);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await getSongRandom();
+      setRandom(data);
+      console.log(data);
+      console.log(random);
+    };
+    catchErrors(fetchData());
+  }, []);
+return (
+      <>
+  
+     <main>
+              <SectionWrapper title="Genres">
+     {/* {random.categories.items[3].name} */}
+      Audio-Fuse
+     <RandomsGrid randoms={random.categories.items} />
+        {/* <img src={random.categories.items[2].icons[0].url} alt="Avatar"/> */}
+</SectionWrapper>
+            </main>
+          </>
+);
+} 
 
-const Random = () =>{
-    
-      
-    return (
-        <div style={{width:"100%"}}>
-            <h1>Random songs go here</h1>
-        </div>
-    );
-}
 export default Random;
+    

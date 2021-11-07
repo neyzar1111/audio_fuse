@@ -6,7 +6,7 @@ import {
     getCurrentUserProfile,
     getCurrentUserPlaylists,
     getTopArtists,
-    getTopTracks, getExtraAudio,
+    getTopTracks, getExtraAudio
 
 } from '../spotify';
 
@@ -15,7 +15,6 @@ const Profile = ({chooseTrack}) => {
     const [playlists, setPlaylists] = useState(null);
     const [topArtists, setTopArtists] = useState(null);
     const [topTracks, setTopTracks] = useState(null);
-
 
     useEffect(() => {
 
