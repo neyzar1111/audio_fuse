@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import { getSongRandom } from '../spotify';
 import { catchErrors } from '../utils';
 import { StyledHeader } from '../styles';
-import { SectionWrapper, RandomsGrid } from '../components';
+import { SectionWrapper, RandomsGrid, Loader } from '../components';
 
 const Random = () => {
       const [random, setRandom] = useState(null);
@@ -21,12 +21,18 @@ return (
       <>
   
      <main>
+
+     {random ? (
               <SectionWrapper title="Genres">
      {/* {random.categories.items[3].name} */}
       Audio-Fuse
      <RandomsGrid randoms={random.categories.items} />
         {/* <img src={random.categories.items[2].icons[0].url} alt="Avatar"/> */}
-</SectionWrapper>
+     </SectionWrapper>
+      ) : (
+                    <Loader />
+                )}
+
             </main>
           </>
 );
