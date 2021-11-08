@@ -1,7 +1,8 @@
 
 # Audio Fuse
 
-A full stack web app to visualize personalized Spotify music
+A full stack web app to visualize personalized Spotify music.
+Demo: https://audio-fuse.herokuapp.com/
 
 ## Local Installation & Set Up
 
