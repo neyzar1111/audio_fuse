@@ -43,6 +43,7 @@ app.get('/login', (req, res) => {
         'user-read-private',
         'user-read-email',
         'user-top-read',
+        'user-library-read',
         'user-library-modify',
         'user-read-playback-state',
         'user-modify-playback-state'

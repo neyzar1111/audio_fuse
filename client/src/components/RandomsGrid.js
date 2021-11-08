@@ -8,8 +8,9 @@ const RandomsGrid = ({ randoms }) => (
             <div className="grid__item__inner">
               {random.icons[0] && (
                 <div className="grid__item__img">
-                  <img src={random.icons[0].url} alt={random.name} />
+                  <img src={random.icons[0].url} alt={random.name} style={{borderRadius: '50%'}}/>
                 </div>
+
               )}
               <h3 className="grid__item__name overflow-ellipsis">{random.name}</h3>
               {/* <p className="grid__item__label">Random</p> */}
