@@ -36,7 +36,7 @@ const Nav = ({setActiveMenu}) =>{
                 </li>
                 <li className="list__item" >
                     <Link  to={`/random`}>
-                        <p className="list__item__name"  onClick={()=>setActiveMenu(false)}>Random</p>
+                        <p className="list__item__name"  onClick={()=>setActiveMenu(false)}>Genres</p>
                     </Link>
                 </li>
             </StyledNav>
