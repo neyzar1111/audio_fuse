@@ -10,32 +10,32 @@ const Nav = ({setActiveMenu}) =>{
                     <img className="logo" src="/assets/logo_words.png"/>
                 </div>
                 <li className="list__item" >
-                    <Link  to={`/`}  >
+                    <Link  to="/">
                         <p className="list__item__name" onClick={()=>setActiveMenu(false)}>Profile</p>
                     </Link>
                 </li>
                 <li className="list__item" >
-                    <Link  to={`/playlists`}  >
+                    <Link  to="/playlists " >
                         <p className="list__item__name" onClick={()=>setActiveMenu(false)}>Playlists</p>
                     </Link>
                 </li>
                 <li className="list__item"  >
-                    <Link  to={`/podcasts`} >
+                    <Link  to= "/podcasts">
                         <p className="list__item__name" onClick={()=>setActiveMenu(false)}>Podcasts</p>
                     </Link>
                 </li>
                 <li className="list__item"  >
-                    <Link  to={`/top-tracks`}>
+                    <Link  to="/top-tracks">
                         <p className="list__item__name" onClick={()=>setActiveMenu(false)}>Top-tracks</p>
                     </Link>
                 </li>
                 <li className="list__item" >
-                    <Link   to={`/top-artists`}>
+                    <Link   to="/top-artists">
                         <p className="list__item__name"  onClick={()=>setActiveMenu(false)}>Top-artists</p>
                     </Link>
                 </li>
                 <li className="list__item" >
-                    <Link  to={`/random`}>
+                    <Link  to="/random">
                         <p className="list__item__name"  onClick={()=>setActiveMenu(false)}>Random</p>
                     </Link>
                 </li>
