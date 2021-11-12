@@ -1,17 +1,17 @@
 //=============Imports===================
 
-import React, {useState,useEffect} from "react";
-import {accessToken,logout, getCurrentUserProfile} from "./spotify";
-import {catchErrors, ScrollToTop} from "./utils";
+import React, { useState, useEffect } from "react";
+import { accessToken, logout, getCurrentUserProfile } from "./spotify";
+import { catchErrors, ScrollToTop } from "./utils";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
-import {GlobalStyle, StyledNav} from "./styles";
-import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random} from "./pages";
+import { GlobalStyle, StyledNav } from "./styles";
+import { Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random } from "./pages";
 import styled from "styled-components/macro";
-import {Player, Nav} from "./components";
+import { Player, Nav } from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -36,48 +36,48 @@ const StyledLogoutButton = styled.button`
 
 
 function App() {
-    const [token , setToken] = useState(null);
+    const [token, setToken] = useState(null);
     const [profile, setProfile] = useState(null);
     const [playingTrack, setPlayingTrack] = useState(null);
     const [isActiveMenu, setActiveMenu] = useState(false);
 
 
-    const chooseTrack = (track) =>{
+    const chooseTrack = (track) => {
         setPlayingTrack(track)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setToken(accessToken);
-        const fetchData = async()=> {
-            const {data} = await getCurrentUserProfile();
+        const fetchData = async () => {
+            const { data } = await getCurrentUserProfile();
             setProfile(data);
             // console.log(data)
         }
 
-        catchErrors( fetchData());
+        catchErrors(fetchData());
 
     }, [])
 
 
     return (
         <div className="App">
-            <GlobalStyle isActiveMenu={`${isActiveMenu}`}/>
+            <GlobalStyle isActiveMenu={`${isActiveMenu}`} />
             <header className="App-header">
                 {!token ? (
-                    <Login/>
-                ):(
+                    <Login />
+                ) : (
                     <>
                         <div className="main_wrap">
 
                             <Router>
                                 <div className="nav_container">
                                     <div className="nav_wrap">
-                                        <Nav setActiveMenu={setActiveMenu}/>
+                                        <Nav setActiveMenu={setActiveMenu} />
                                     </div>
                                 </div>
 
-                                <div style={{position:"absolute", zIndex: "55", }}  className="menuButton">
-                                    <IconButton   onClick={()=> setActiveMenu(true)}>
+                                <div style={{ position: "absolute", zIndex: "55", }} className="menuButton">
+                                    <IconButton onClick={() => setActiveMenu(true)}>
                                         <MenuIcon />
                                     </IconButton>
                                 </div>
@@ -86,34 +86,34 @@ function App() {
                                 <ScrollToTop />
                                 <div className="container__of_pages">
                                     <Switch>
-                                        <Route   path="/top-artists">
-                                            <TopArtists  chooseTrack={chooseTrack} />
+                                        <Route path="/top-artists">
+                                            <TopArtists chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route exact path="/top-tracks">
                                             <TopTracks chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route exact path="/playlists/:id">
-                                            <Playlist  chooseTrack={chooseTrack}/>
+                                            <Playlist chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route exact path="/playlists">
                                             <Playlists chooseTrack={chooseTrack} />
                                         </Route>
 
-                                        <Route  exact path="/podcasts">
-                                            <Podcasts   />
+                                        <Route exact path="/podcasts">
+                                            <Podcasts />
                                         </Route>
                                         <Route exact path="/random">
-                                            <Random  chooseTrack={chooseTrack} />
+                                            <Random chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/">
-                                            <Profile  chooseTrack={chooseTrack} />
+                                        <Route path="/">
+                                            <Profile chooseTrack={chooseTrack} />
                                         </Route>
                                     </Switch>
                                 </div>
                             </Router>
                         </div>
 
-                        <Player  accessToken={token} trackUri={playingTrack?.uri }/>
+                        <Player accessToken={token} trackUri={playingTrack?.uri} />
                     </>
                 )
 

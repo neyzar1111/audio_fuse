@@ -138,7 +138,6 @@ export const getTopTracks = (time_range = 'short_term') => {
     return axios.get(`/me/top/tracks?time_range=${time_range}`);
 };
 
-
 //Getting playlist by id
 export const getPlaylistById = playlist_id => {
     return axios.get(`/playlists/${playlist_id}`);
@@ -149,7 +148,7 @@ export const getAudioFeaturesForTracks = ids => {
     return axios(`/audio-features?ids=${ids}`);
 }
 
-// Getting Song!! Working on this now
+// Getting Genres
 export const getSongRandom = (limit = 50) => axios.get(`/browse/categories?limit=${limit}`);
 console.log(getSongRandom());
 
