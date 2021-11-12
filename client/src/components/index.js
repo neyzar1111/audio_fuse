@@ -9,5 +9,9 @@ export { default as FilterButtons } from './FilterButtons';
 export { default as Audio } from './Audio';
 export { default as Nav } from './Nav';
 export {default as RandomsGrid} from './RandomsGrid';
+export {default as PodcastSpotifyGrid} from './PodcastSpotifyGrid';
+export {default as PodcastSpotifyList} from './PodcastSpotifyList';
+export {default as PodcastSpotifyInfo} from './PodcastSpotifyInfo';
+
 
 
