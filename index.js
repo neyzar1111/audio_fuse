@@ -1,5 +1,11 @@
 require('dotenv').config();
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const FRONTEND_URI = process.env.FRONTEND_URI;
+const PORT = process.env.PORT || 8888;
+
 const express = require('express');
 const querystring = require('querystring');
 const axios = require('axios');
@@ -7,12 +13,6 @@ const path = require('path');
 
 const app = express();
 // const port = 8888;
-
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = process.env.REDIRECT_URI;
-const FRONTEND_URI = process.env.FRONTEND_URI;
-const PORT = process.env.PORT || 8888;
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, './client/build')));
@@ -43,6 +43,7 @@ app.get('/login', (req, res) => {
         'user-read-private',
         'user-read-email',
         'user-top-read',
+        'user-library-read',
         'user-library-modify',
         'user-read-playback-state',
         'user-modify-playback-state'
@@ -52,7 +53,7 @@ app.get('/login', (req, res) => {
         client_id: CLIENT_ID,
         response_type: 'code',
         redirect_uri: REDIRECT_URI,
-        state:state,
+        state: state,
         scope: scope,
     });
 
@@ -86,7 +87,7 @@ app.get('/callback', (req, res) => {
                     expires_in,
                 });
 
-                res.redirect(`${FRONTEND_URI}?${queryParams}`);
+                res.redirect(`${FRONTEND_URI}/?${queryParams}`);
 
             } else {
                 res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);

@@ -1,8 +1,7 @@
 //=============Imports===================
 
-import React, {useState,useEffect} from "react";
-import {accessToken,logout, getCurrentUserProfile} from "./spotify";
-import {catchErrors, ScrollToTop} from "./utils";
+import React, { useState, useEffect } from "react";
+import { catchErrors, ScrollToTop } from "./utils";
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,8 +20,9 @@ import {
     Search,
     PodcastSpotify
 } from "./pages";
+import {accessToken,logout, getCurrentUserProfile} from "./spotify";
 import styled from "styled-components/macro";
-import {Player, Nav} from "./components";
+import { Player, Nav } from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -47,49 +47,47 @@ const StyledLogoutButton = styled.button`
 
 
 function App() {
-    const [token , setToken] = useState(null);
+    const [token, setToken] = useState(null);
     const [profile, setProfile] = useState(null);
     const [playingTrack, setPlayingTrack] = useState(null);
     const [isActiveMenu, setActiveMenu] = useState(false);
 
 
-    const chooseTrack = (track) =>{
-        console.log("chosen track uri", track.uri);
+    const chooseTrack = (track) => {
         setPlayingTrack(track)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setToken(accessToken);
-        const fetchData = async()=> {
-            const {data} = await getCurrentUserProfile();
+        const fetchData = async () => {
+            const { data } = await getCurrentUserProfile();
             setProfile(data);
-            // console.log(data)
         }
 
-        catchErrors( fetchData());
+        catchErrors(fetchData());
 
     }, [])
 
 
     return (
         <div className="App">
-            <GlobalStyle isActiveMenu={`${isActiveMenu}`}/>
+            <GlobalStyle isActiveMenu={`${isActiveMenu}`} />
             <header className="App-header">
                 {!token ? (
-                    <Login/>
-                ):(
+                    <Login />
+                ) : (
                     <>
                         <div className="main_wrap">
 
                             <Router>
                                 <div className="nav_container">
                                     <div className="nav_wrap">
-                                        <Nav setActiveMenu={setActiveMenu}/>
+                                        <Nav setActiveMenu={setActiveMenu} />
                                     </div>
                                 </div>
 
-                                <div style={{position:"absolute", zIndex: "55", }}  className="menuButton">
-                                    <IconButton   onClick={()=> setActiveMenu(true)}>
+                                <div style={{ position: "absolute", zIndex: "55", }} className="menuButton">
+                                    <IconButton onClick={() => setActiveMenu(true)}>
                                         <MenuIcon />
                                     </IconButton>
                                 </div>
@@ -98,8 +96,8 @@ function App() {
                                 <ScrollToTop />
                                 <div className="container__of_pages">
                                     <Switch>
-                                        <Route   path="/top-artists">
-                                            <TopArtists  chooseTrack={chooseTrack} />
+                                        <Route path="/top-artists">
+                                            <TopArtists chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route  path="/top-tracks">
                                             <TopTracks chooseTrack={chooseTrack} />
@@ -131,7 +129,7 @@ function App() {
                             </Router>
                         </div>
 
-                        <Player  accessToken={token} trackUri={playingTrack?.uri }/>
+                        <Player accessToken={token} trackUri={playingTrack?.uri} />
                     </>
                 )
 
