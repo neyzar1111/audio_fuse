@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { catchErrors } from '../utils';
 import {StyledHeader} from "../styles";
-import {SectionWrapper, ArtistsGrid, TrackList, PlaylistsGrid, Loader, Player} from "../components";
+import {SectionWrapper, ArtistsGrid, TrackList, PlaylistsGrid, Loader} from "../components";
 import {
     getCurrentUserProfile,
     getCurrentUserPlaylists,
     getTopArtists,
-    getTopTracks, getExtraAudio
+    getTopTracks
 
 } from '../spotify';
 
