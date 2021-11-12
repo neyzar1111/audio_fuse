@@ -6,3 +6,7 @@ export {default as Playlists } from './Playlists';
 export {default as Playlist } from './Playlist';
 export {default as Podcasts } from './Podcasts';
 export {default as Random } from './Random';
+export {default as Search } from './Search';
+export {default as Show } from './Show';
+
+
