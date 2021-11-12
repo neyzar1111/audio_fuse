@@ -147,6 +147,14 @@ export const getSongRandom = (limit = 50) => axios.get(`/browse/categories?limit
 console.log(getSongRandom());
 
 
-const instance = axios.create({
-    baseURL: 'https://musicbrainz.org/ws/2/',
-});
+export const getSearchedItem = (search)=>{
+    console.log('Start search');
+    return axios.get(`/search?q=${search}&type=show&market=ES&limit=40&offset=5`);
+}
+console.log(getSearchedItem());
+
+
+//Getting show by id
+export const getShowById = (show_id) =>{
+    return axios.get(`/shows/${show_id}/episodes?market=ES&limit=30&offset=5`)
+}
