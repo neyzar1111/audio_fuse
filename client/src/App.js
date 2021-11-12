@@ -1,7 +1,6 @@
 //=============Imports===================
 
 import React, { useState, useEffect } from "react";
-import { accessToken, logout, getCurrentUserProfile } from "./spotify";
 import { catchErrors, ScrollToTop } from "./utils";
 import {
     BrowserRouter as Router,
@@ -9,8 +8,9 @@ import {
     Route,
     useLocation,
 } from "react-router-dom";
-import { GlobalStyle, StyledNav } from "./styles";
+import { accessToken, logout, getCurrentUserProfile } from "./spotify";
 import { Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random } from "./pages";
+import { GlobalStyle, StyledNav } from "./styles";
 import styled from "styled-components/macro";
 import { Player, Nav } from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
