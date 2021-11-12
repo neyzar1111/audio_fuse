@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { StyledGrid } from '../styles';
 
 const PodcastSpotifyGrid = ({ shows }) => {
-    console.log(shows)
    return (
 
         <>

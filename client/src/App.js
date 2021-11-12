@@ -1,6 +1,7 @@
 //=============Imports===================
 
 import React, { useState, useEffect } from "react";
+import {accessToken,logout, getCurrentUserProfile} from "./spotify";
 import { catchErrors, ScrollToTop } from "./utils";
 import {
     BrowserRouter as Router,
@@ -20,7 +21,6 @@ import {
     Search,
     PodcastSpotify
 } from "./pages";
-import {accessToken,logout, getCurrentUserProfile} from "./spotify";
 import styled from "styled-components/macro";
 import { Player, Nav } from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
