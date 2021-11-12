@@ -89,20 +89,20 @@ function App() {
                                         <Route path="/top-artists">
                                             <TopArtists chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/top-tracks">
+                                        <Route path="/top-tracks">
                                             <TopTracks chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/playlists/:id">
+                                        <Route path="/playlists/:id">
                                             <Playlist chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/playlists">
+                                        <Route path="/playlists">
                                             <Playlists chooseTrack={chooseTrack} />
                                         </Route>
 
-                                        <Route exact path="/podcasts">
+                                        <Route path="/podcasts">
                                             <Podcasts />
                                         </Route>
-                                        <Route exact path="/random">
+                                        <Route path="/random">
                                             <Random chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route path="/">
