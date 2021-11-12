@@ -9,7 +9,18 @@ import {
     Route,
 } from "react-router-dom";
 import {GlobalStyle, StyledNav} from "./styles";
-import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random,Search,Show} from "./pages";
+import {
+    Login,
+    Profile,
+    TopArtists,
+    TopTracks,
+    Playlists,
+    Playlist,
+    Podcasts,
+    Random,
+    Search,
+    PodcastSpotify
+} from "./pages";
 import styled from "styled-components/macro";
 import {Player, Nav} from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -109,8 +120,8 @@ function App() {
                                         <Route  path="/search">
                                             <Search  chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route  path="/show/:id/:name">
-                                            <Show  chooseTrack={chooseTrack} />
+                                        <Route  path="/podcast-spotify/:id/:name">
+                                            <PodcastSpotify  chooseTrack={chooseTrack} />
                                         </Route>
                                         <Route  path="/">
                                             <Profile  chooseTrack={chooseTrack} />
