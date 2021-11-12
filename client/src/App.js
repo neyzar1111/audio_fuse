@@ -121,6 +121,9 @@ function App() {
                                         <Route  path="/podcast-spotify/:id/:name">
                                             <PodcastSpotify  chooseTrack={chooseTrack} />
                                         </Route>
+                                        <Route  path="/search">
+                                            <PodcastSpotify  chooseTrack={chooseTrack} />
+                                        </Route>
                                         <Route  path="/">
                                             <Profile  chooseTrack={chooseTrack} />
                                         </Route>

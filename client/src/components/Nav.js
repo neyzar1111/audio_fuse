@@ -15,6 +15,11 @@ const Nav = ({ setActiveMenu }) => {
                     </Link>
                 </li>
                 <li className="list__item" >
+                    <Link to="/search"  >
+                        <p className="list__item__name" onClick={() => setActiveMenu(false)}>Search</p>
+                    </Link>
+                </li>
+                <li className="list__item" >
                     <Link to="/playlists"  >
                         <p className="list__item__name" onClick={() => setActiveMenu(false)}>Playlists</p>
                     </Link>
