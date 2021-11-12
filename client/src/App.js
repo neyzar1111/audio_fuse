@@ -9,7 +9,7 @@ import {
     Route,
 } from "react-router-dom";
 import {GlobalStyle, StyledNav} from "./styles";
-import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random} from "./pages";
+import {Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random,Search,Show} from "./pages";
 import styled from "styled-components/macro";
 import {Player, Nav} from "./components";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -43,6 +43,7 @@ function App() {
 
 
     const chooseTrack = (track) =>{
+        console.log("chosen track uri", track.uri);
         setPlayingTrack(track)
     }
 
@@ -89,23 +90,29 @@ function App() {
                                         <Route   path="/top-artists">
                                             <TopArtists  chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/top-tracks">
+                                        <Route  path="/top-tracks">
                                             <TopTracks chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/playlists/:id">
+                                        <Route  path="/playlists/:id">
                                             <Playlist  chooseTrack={chooseTrack}/>
                                         </Route>
-                                        <Route exact path="/playlists">
+                                        <Route  path="/playlists">
                                             <Playlists chooseTrack={chooseTrack} />
                                         </Route>
 
-                                        <Route  exact path="/podcasts">
+                                        <Route   path="/podcasts">
                                             <Podcasts   />
                                         </Route>
-                                        <Route exact path="/random">
+                                        <Route  path="/random">
                                             <Random  chooseTrack={chooseTrack} />
                                         </Route>
-                                        <Route exact path="/">
+                                        <Route  path="/search">
+                                            <Search  chooseTrack={chooseTrack} />
+                                        </Route>
+                                        <Route  path="/show/:id/:name">
+                                            <Show  chooseTrack={chooseTrack} />
+                                        </Route>
+                                        <Route  path="/">
                                             <Profile  chooseTrack={chooseTrack} />
                                         </Route>
                                     </Switch>
