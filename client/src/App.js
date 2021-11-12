@@ -7,6 +7,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    useLocation,
 } from "react-router-dom";
 import { GlobalStyle, StyledNav } from "./styles";
 import { Login, Profile, TopArtists, TopTracks, Playlists, Playlist, Podcasts, Random } from "./pages";
